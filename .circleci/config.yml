@@ -8,7 +8,7 @@ jobs:
   build-and-test:
     machine:
       python:
-        version: 2.7.11
+        version: 3.9.0
 
     dependencies:
       pre:
