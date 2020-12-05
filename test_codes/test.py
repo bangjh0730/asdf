@@ -5,7 +5,7 @@ import random
 
 sys.path.insert(1, os.path.join(os.getcwd(), '../', 'src'))
 
-from src.flaskapp.document import *
+from flaskapp.document import *
 
 
 def test_generate_nickname():

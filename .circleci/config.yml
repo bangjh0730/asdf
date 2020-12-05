@@ -6,8 +6,14 @@ orbs:
 
 jobs:
   build-and-test:
-    docker:
-      - image: buildpack-deps:trusty
+    machine:
+    python:
+        version: 2.7.11
+
+  dependencies:
+    pre:
+      - sudo apt-get install libpcap-dev python-dev
+      - pip install pymongo numpy pcapy dpkt
     steps:
       - checkout
       - run:
