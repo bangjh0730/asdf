@@ -1,3 +1,10 @@
+version: 2.1
+
+orbs:
+  cypress: cypress-io/cypress@1.26.0
+  python: circleci/python@1.2.1
+  pytest: thekevjames/pytest@0.0.60
+
 jobs:
   build-and-test:
     executor: python/default
@@ -9,14 +16,7 @@ jobs:
       - run:
           command: ./test_codes/test.py test
           name: Test
-
-version: 2.1
-
-orbs:
-  cypress: cypress-io/cypress@1.26.0
-  python: circleci/python@1.2.1
-  pytest: thekevjames/pytest@0.0.60
-
+          
 workflows:
   build:
     jobs:
