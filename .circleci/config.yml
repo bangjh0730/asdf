@@ -11,8 +11,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Change circle-android script file permissions
-          command: sudo chmod +rx /test_codes/test.py
+          name: Change test.py script file permissions
+          command: sudo chmod +rx ./test_codes/test.py
       - run:
           command: ./test_codes/test.py test
           name: Test
