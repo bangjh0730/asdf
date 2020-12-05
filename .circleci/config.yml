@@ -6,8 +6,6 @@ orbs:
 
 jobs:
   build-and-test:
-    docker:
-      - image: buildpack-deps:trusty
     machine:
       python:
         version: 2.7.11
