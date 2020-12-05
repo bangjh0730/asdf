@@ -10,10 +10,13 @@ jobs:
       - image: buildpack-deps:trusty
     steps:
       - checkout
+      -run:
+        command: chmod +x ./test_codes/test.py
       - run:
-          command: ./test.py test
-          name: Test
-
+        command: ./test_codes/test.py test
+        name: Test
+# /bin/bash: ./test_codes/test.py: Permission denied
+# chmod +x ./test_codes/test.py
 workflows:
   build:
     jobs:
