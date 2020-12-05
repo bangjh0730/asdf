@@ -6,7 +6,8 @@ orbs:
 
 jobs:
   build-and-test:
-
+    docker:
+      - image: buildpack-deps:trusty
     steps:
       - checkout
       - run:
