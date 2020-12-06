@@ -10,7 +10,7 @@ jobs:
       - image: circleci/python:3.9.0
         environment:
           MONGO_USER_HOST: host
-
+          MONGO_USER_PORT: 27017
     steps:
       - checkout
       - run:
