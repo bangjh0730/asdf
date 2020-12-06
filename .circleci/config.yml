@@ -62,7 +62,7 @@ jobs:
                 .Branch }}-{{ .Revision }}
               paths:
                 - ~/.cache/pip
-      - run: python -m pytest <<parameters.args>>
+      - run: python -m pytest test_codes/test.py
       - store_test_results:
           path: test-reports
       - store_artifacts:
