@@ -21,7 +21,7 @@ jobs:
       - run:
           name: run tests
           command: |
-            pip install --upgrade virtualenv
+            python3.9.0 -m venv venv
             source venv/bin/activate
             mkdir test-results
             pytest --junitxml=test-results/junit.xml
