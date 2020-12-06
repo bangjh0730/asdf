@@ -16,7 +16,7 @@ jobs:
 workflows:
   main:
     jobs:
-      - pytest:
+      - python/test:
           python_version: 3.9.0
       - publish
 # workflows:
