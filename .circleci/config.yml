@@ -20,6 +20,7 @@ jobs:
           command: sudo chmod +rx ./test_codes/test.py
       - run:
           command: find . -name \*.pyc -delete
+      - run:
           command: test_codes/test.py
           name: Test
 
