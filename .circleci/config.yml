@@ -65,10 +65,6 @@ jobs:
             paths:
             - ~/.cache/pip
     - run: python -m pytest test_codes/test.py
-    - store_test_results:
-        path: test-reports
-    - store_artifacts:
-        path: test-reports
 
 workflows:
   build:
