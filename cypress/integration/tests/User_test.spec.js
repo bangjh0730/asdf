@@ -45,7 +45,7 @@ describe('Execute', function(){
         cy.wait(500)
         cy.get('.btn').contains('Execute').click()
         cy.wait(5000)
-        // cy.get('textarea[id="console"]').should('have.value', 'The sum of two numbers is 15\n')
+        cy.get('textarea[id="console"]').should('have.value', 'The sum of two numbers is 15\n')
     })
 
     it('Comment', function(){
@@ -74,7 +74,7 @@ describe('Execute', function(){
         cy.wait(500)
         cy.get('.btn').contains('Execute').click()
         cy.wait(5000)
-        // cy.get('textarea[id="console"]').should('have.value', 'The sum of two numbers is 25')
+        cy.get('textarea[id="console"]').should('have.value', 'The sum of two numbers is 25')
     })
 
     it('Find', function(){
