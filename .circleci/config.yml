@@ -22,8 +22,13 @@ jobs:
           name: Change test.py script file permissions
           command: sudo chmod +rx ./test_codes/test.py
       - run:
-          command: pytest test_codes/test.py
+          command: |
+            pytest test_codes/test.py
           name: Test
+      - store_test_results:
+          path: test-reports
+      - store_artifacts:
+          path: test-reports
 
 workflows:
   build:
