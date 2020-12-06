@@ -64,13 +64,20 @@ jobs:
               .Branch }}-{{ .Revision }}
             paths:
             - ~/.cache/pip
-
     - run: python -m pytest test_codes/test.py
+    - store_test_results:
+        path: test-reports
+    - store_artifacts:
+        path: test-reports
 
 workflows:
   build:
     jobs:
-      # - cypress/run:
-      #     yarn: true
+      - cypress/run:
+          yarn: true
+      - store_test_results:
+          path: test-reports
+      - store_artifacts:
+          path: test-reports
       - pytest
 
