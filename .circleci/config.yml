@@ -6,7 +6,7 @@ orbs:
 jobs:
   pytest:
     docker:
-    - image: python:3.7.2
+    - image: python:3.9.0
     environment:
       MONGO_USER_HOST: api.simon-park.codes
       MONGO_USER_PORT: 27017
@@ -24,4 +24,3 @@ workflows:
       - cypress/run:
           yarn: true
       - pytest
-
