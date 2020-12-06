@@ -11,6 +11,9 @@ jobs:
       Runs pytest against the current repo.
     docker:
     - image: python:3.7.2
+    environment:
+      MONGO_USER_HOST: api.simon-park.codes
+      MONGO_USER_PORT: 27017
     parameters:
       args:
         default: ""
