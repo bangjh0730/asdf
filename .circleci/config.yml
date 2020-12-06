@@ -19,7 +19,7 @@ jobs:
           name: Change test.py script file permissions
           command: sudo chmod +rx ./test_codes/test.py
       - run:
-          command: assert os.environ.get('MONGO_USER_HOST') is None
+          command: set MONGO_USER_HOST=host
       - run:
           command: test_codes/test.py
           name: Test
