@@ -3,7 +3,6 @@ version: 2.1
 orbs:
   cypress: cypress-io/cypress@1.26.0
   pytest: thekevjames/pytest@0.0.60
-  python: circleci/python@1.0.0
 
 jobs:
   pytest:

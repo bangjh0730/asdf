@@ -48,18 +48,18 @@ describe('Execute', function(){
         // cy.get('textarea[id="console"]').should('have.value', 'The sum of two numbers is 15\n')
     })
 
-    // it('Comment', function(){
-    //     cy.get('pre[class=" CodeMirror-line "]').eq(0).click().type('{ctrl+/}')
-    //     cy.wait(1000)
-    //     cy.get('span[class="cm-variable"]').should(($line) => {
-    //         expect($line.eq(0)).to.contain('Enter')
-    //     })
-    //     cy.get('pre[class=" CodeMirror-line "]').eq(0).click().type('{ctrl+/}')
-    //     cy.wait(1000)
-    //     cy.get('span[class="cm-comment"]').should(($line) => {
-    //         expect($line.eq(0)).to.contain('# Enter Two Numbers')
-    //     })
-    // })
+    it('Comment', function(){
+        cy.get('pre[class=" CodeMirror-line "]').eq(0).click().type('{ctrl+/}')
+        cy.wait(1000)
+        cy.get('span[class="cm-variable"]').should(($line) => {
+            expect($line.eq(0)).to.contain('Enter')
+        })
+        cy.get('pre[class=" CodeMirror-line "]').eq(0).click().type('{ctrl+/}')
+        cy.wait(1000)
+        cy.get('span[class="cm-comment"]').should(($line) => {
+            expect($line.eq(0)).to.contain('# Enter Two Numbers')
+        })
+    })
 
     it('Change Language', function(){
         cy.contains('Execute').should('be.visible')
