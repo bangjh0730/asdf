@@ -19,10 +19,15 @@ jobs:
           name: Change test.py script file permissions
           command: sudo chmod +rx ./test_codes/test.py
       - run:
-          command: set MONGO_USER_HOST=host
-      - run:
-          command: test_codes/test.py
-          name: Test
+          name: run tests
+          command: |
+            . venv/bin/activate
+            mkdir test-results
+            pytest --junitxml=test-results/junit.xml
+      - store_test_results:
+          path: test-results
+      - store_artifacts:
+          path: test-results
 
 workflows:
   build:
