@@ -7,6 +7,7 @@ orbs:
 
 jobs:
   publish:
+    executor: python/default
     steps:
       - checkout
       - python/dist
