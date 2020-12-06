@@ -17,14 +17,12 @@ jobs:
       - run:
           name: Install Python Dependencies
           command: |
-            
             pip install -r requirements.txt
       - run:
           name: Change test.py script file permissions
           command: sudo chmod +rx ./test_codes/test.py
       - run:
           command: |
-            . venv/bin/activate
             python3 -m pytest test_codes/test.py
           name: Test
       - store_test_results:
