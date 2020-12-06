@@ -52,9 +52,12 @@ def update_document_clients(doc_id, client_id):
     doc = get_document(doc_id)
     clients = doc.clients
 
-    nickname, count = clients.get(client_id)
-    clients[client_id] = (nickname, count + 1)
-    doc.save()
+    nickname = clients.get(client_id)
+    if nickname is None:
+        taken = set(doc['clients'].values())
+        nickname = generate_nickname(ignore=taken)
+        clients[client_id] = nickname
+        doc.save()
 
     return clients.copy()
 
@@ -91,7 +94,7 @@ def get_document_peers(doc_id):
     clients = doc.clients
 
     peers = {}
-    for client_id, (client_name, _) in clients.items():
+    for client_id, client_name  in clients.items():
         user = get_user(client_id)
         if user is not None and 'kakaoid' in user:
             client_name = user.kakaoid
@@ -108,11 +111,7 @@ def delete_document_peers(doc_id, user_id):
         return
     clients = doc.clients
     if user_id in clients:
-        nickname, count = clients[user_id]
-        if count > 1:
-            clients[user_id] = (nickname, count - 1)
-        else:
-            clients.pop(user_id)
+        clients.pop(user_id)
     doc.save()
 
 
