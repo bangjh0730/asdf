@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 import sys, os, uuid
 import random
 
