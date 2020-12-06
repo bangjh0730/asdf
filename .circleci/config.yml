@@ -70,14 +70,18 @@ jobs:
     - store_artifacts:
         path: test-reports
 
+  cypress:
+    - cypress/run:
+        yarn: true
+    steps:
+    - store_test_results:
+        path: test-reports
+    - store_artifacts:
+        path: test-reports
+
 workflows:
   build:
     jobs:
-      - cypress/run:
-          yarn: true
-      - store_test_results:
-          path: test-reports
-      - store_artifacts:
-          path: test-reports
+      - cypress
       - pytest
 
