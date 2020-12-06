@@ -3,26 +3,27 @@ version: 2.1
 orbs:
   cypress: cypress-io/cypress@1.26.0
   pytest: thekevjames/pytest@0.0.60
-
+  python: circleci/python@1.0.0
 jobs:
-  build-and-test:
-    docker:
-      - image: python:3.9.0
-    
+  publish:
+    executor: python/default
     steps:
       - checkout
-      - run: python -m pip install --progress-bar=off 
-      - run: pip install -r requirements.txt
+      - python/dist
       - run: python -m pytest test_codes/test.py
-      - store_test_results:
-          path: test-reports
-      - store_artifacts:
-          path: test-reports
 
 workflows:
-  build:
+  main:
     jobs:
-      - cypress/run:
-          yarn: true
-      - build-and-test
+      - python/test:
+          args: '--dev'
+          pkg-manager: pipenv
+          test-tool: pytest
+      - publish
+# workflows:
+#   build:
+#     jobs:
+#       - cypress/run:
+#           yarn: true
+#       - build-and-test
 
