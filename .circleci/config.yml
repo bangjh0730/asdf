@@ -5,20 +5,16 @@ orbs:
   pytest: thekevjames/pytest@0.0.60
   python: circleci/python@1.0.0
 
-jobs:
-  publish:
-    docker:
-      - image: cimg/python:3.9.0
-    steps:
-      - checkout
-      - run: python -m pytest test_codes/test.py
-
 workflows:
   main:
     jobs:
-      - python/test:
-          test-tool: pytest
-      - publish
+      docker:
+      - image: cimg/python:3.9.0
+    steps:
+      - checkout
+      - run:
+          name: run test
+          commands: python -m pytest test_codes/test.py
 # workflows:
 #   build:
 #     jobs:
