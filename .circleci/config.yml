@@ -60,10 +60,10 @@ jobs:
             - ~/.cache/pip
     - run: python -m pytest test_codes/test.py
 
-# workflows:
-#   build:
-#     jobs:
-#       - cypress/run:
-#           yarn: true
-#       - build-and-test
+workflows:
+  build:
+    jobs:
+      # - cypress/run:
+      #     yarn: true
+      - pytest
 
