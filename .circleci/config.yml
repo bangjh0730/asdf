@@ -8,6 +8,9 @@ jobs:
   build-and-test:
     docker:
       - image: circleci/python:3.9.0
+        environment:
+            MONGO_USER_HOST: host
+            # MONGO_USER_PORT: port
     steps:
       - checkout
       - run:
@@ -18,17 +21,10 @@ jobs:
       - run:
           name: Change test.py script file permissions
           command: sudo chmod +rx ./test_codes/test.py
+
       - run:
-          name: run tests
-          command: |
-            python3.9.0 -m venv venv
-            source venv/bin/activate
-            mkdir test-results
-            pytest --junitxml=test-results/junit.xml
-      - store_test_results:
-          path: test-results
-      - store_artifacts:
-          path: test-results
+          command: test_codes/test.py
+          name: Test
 
 workflows:
   build:
