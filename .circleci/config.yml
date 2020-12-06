@@ -19,7 +19,7 @@ jobs:
           name: Change test.py script file permissions
           command: sudo chmod +rx ./test_codes/test.py
       - run:
-          command: find . -name \*.pyc -delete
+          command: assert os.environ.get('MONGO_USER_HOST') is None
       - run:
           command: test_codes/test.py
           name: Test
