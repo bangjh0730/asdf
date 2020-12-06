@@ -8,9 +8,7 @@ jobs:
   build-and-test:
     docker:
       - image: circleci/python:3.9.0
-        environment:
-            MONGO_USER_HOST: host
-            # MONGO_USER_PORT: port
+
     steps:
       - checkout
       - run:
@@ -21,7 +19,9 @@ jobs:
       - run:
           name: Change test.py script file permissions
           command: sudo chmod +rx ./test_codes/test.py
-
+        environment:
+            MONGO_USER_HOST: host
+            MONGO_USER_PORT: port
       - run:
           command: test_codes/test.py
           name: Test
