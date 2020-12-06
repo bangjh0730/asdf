@@ -39,6 +39,9 @@ jobs:
         type: string
     steps:
     - checkout
+    - run:
+        name: Install Dependencies
+        command: pip install -r requirements.txt
     - when:
         condition: true
         steps:
@@ -58,9 +61,7 @@ jobs:
               .Branch }}-{{ .Revision }}
             paths:
             - ~/.cache/pip
-    - run:
-      name: Install Dependencies
-      command: pip install -r requirements.txt
+
     - run: python -m pytest test_codes/test.py
 
 workflows:
