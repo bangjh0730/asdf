@@ -4,9 +4,9 @@ orbs:
   cypress: cypress-io/cypress@1.26.0
   pytest: thekevjames/pytest@0.0.60
   python: circleci/python@1.0.0
+
 jobs:
   publish:
-    executor: python/default
     steps:
       - checkout
       - python/dist
@@ -15,10 +15,8 @@ jobs:
 workflows:
   main:
     jobs:
-      - python/test:
-          args: '--dev'
-          pkg-manager: pipenv
-          test-tool: pytest
+      - pytest:
+          python_version: 3.9.0
       - publish
 # workflows:
 #   build:
