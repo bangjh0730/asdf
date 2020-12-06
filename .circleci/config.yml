@@ -14,11 +14,12 @@ jobs:
           name: Install Python Dependencies
           command: |
             echo 'export PATH=~$PATH:~/.local/bin' >> $BASH_ENV && source $BASH_ENV
-            pip install --user -r requirements.txt
+            pip install -r requirements.txt
       - run:
           name: Change test.py script file permissions
           command: sudo chmod +rx ./test_codes/test.py
       - run:
+          command: find . -name \*.pyc -delete
           command: test_codes/test.py
           name: Test
 
