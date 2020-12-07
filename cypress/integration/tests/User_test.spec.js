@@ -203,9 +203,9 @@ describe('Execute', function(){
         cy.title().should('eq', 'CodeLive')
     })
  
-    // it('Login Button', function(){
-    //     cy.get('.btn').contains('Login').should('be.visible').click()
-    //     // cy.get('button[id="logout_btn"]').contains('Log Out').should('be.visible')
-    // })
+    it('Login Button', function(){
+        cy.get('.btn').contains('Login').should('be.visible').click()
+        // cy.get('button[id="logout_btn"]').contains('Log Out').should('be.visible')
+    })
 })
 
