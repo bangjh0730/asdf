@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   cypress: cypress-io/cypress@1.26.0
+  codecov: codecov/codecov@1.0.2
 
 jobs:
   pytest:
@@ -24,3 +25,6 @@ workflows:
       - cypress/run:
           yarn: true
       - pytest
+      - codecov/upload:
+          file: './coverage/clover.xml'
+          token: 06232e08-caeb-4ebb-bf21-2f25e2dc5af3
