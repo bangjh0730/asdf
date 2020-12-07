@@ -22,7 +22,7 @@ jobs:
 workflows:
   build:
     jobs:
-      - cypress/run:
+      - cypress/cypress:
           yarn: true
       - pytest
       - codecov/coverage:
