@@ -1,9 +1,7 @@
-#!/usr/bin/env python
-
 import sys, os, uuid
 import random
 
-sys.path.insert(1, os.path.join(os.getcwd(), './', 'src'))
+sys.path.insert(1, os.path.join(os.getcwd(), 'src'))
 
 from flaskapp.document import *
 

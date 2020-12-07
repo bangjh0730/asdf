@@ -33,113 +33,113 @@ describe('Execute', function(){
         cy.get('div[class="row vertical-center bg-dark"]').should('have.css', 'background-color', 'rgb(52, 58, 64)')
     })
 
-    it('Python Code', function(){
-        cy.get('a[href*="#tabFile"]').click()
-        cy.wait(1500)
-        cy.contains('Execute').should('be.visible')
-        cy.get('button[type="button"]').contains('Execute').should('be.visible')
-        cy.get('pre[class=" CodeMirror-line "]').click().type('#Enter Two Numbers{enter}x = int(input()){enter}y = int(input()){enter}#Get Sum{enter}z = x + y{enter}{enter}#Print Output{enter}print("The sum of two numbers is", z){enter}')
-        cy.wait(1000)
-        cy.contains('#Enter Two Numbers').should('be.visible')
-        cy.get('textarea[id="script-input"]').type('10{enter}5')
-        cy.wait(500)
-        cy.get('.btn').contains('Execute').click()
-        cy.wait(5000)
-        // cy.get('textarea[id="console"]').should('have.value', 'The sum of two numbers is 15\n')
-    })
+    // it('Python Code', function(){
+    //     cy.get('a[href*="#tabFile"]').click()
+    //     cy.wait(1500)
+    //     cy.contains('Execute').should('be.visible')
+    //     cy.get('button[type="button"]').contains('Execute').should('be.visible')
+    //     cy.get('pre[class=" CodeMirror-line "]').click().type('#Enter Two Numbers{enter}x = int(input()){enter}y = int(input()){enter}#Get Sum{enter}z = x + y{enter}{enter}#Print Output{enter}print("The sum of two numbers is", z){enter}')
+    //     cy.wait(1000)
+    //     cy.contains('#Enter Two Numbers').should('be.visible')
+    //     cy.get('textarea[id="script-input"]').type('10{enter}5')
+    //     cy.wait(500)
+    //     cy.get('.btn').contains('Execute').click()
+    //     cy.wait(5000)
+    //     // cy.get('textarea[id="console"]').should('have.value', 'The sum of two numbers is 15\n')
+    // })
 
-    it('Comment', function(){
-        cy.get('pre[class=" CodeMirror-line "]').eq(0).click().type('{ctrl+/}')
-        cy.wait(1000)
-        cy.get('span[class="cm-variable"]').should(($line) => {
-            expect($line.eq(0)).to.contain('Enter')
-        })
-        cy.get('pre[class=" CodeMirror-line "]').eq(0).click().type('{ctrl+/}')
-        cy.wait(1000)
-        cy.get('span[class="cm-comment"]').should(($line) => {
-            expect($line.eq(0)).to.contain('# Enter Two Numbers')
-        })
-    })
+    // it('Comment', function(){
+    //     cy.get('pre[class=" CodeMirror-line "]').eq(0).click().type('{ctrl+/}')
+    //     cy.wait(1000)
+    //     cy.get('span[class="cm-variable"]').should(($line) => {
+    //         expect($line.eq(0)).to.contain('Enter')
+    //     })
+    //     cy.get('pre[class=" CodeMirror-line "]').eq(0).click().type('{ctrl+/}')
+    //     cy.wait(1000)
+    //     cy.get('span[class="cm-comment"]').should(($line) => {
+    //         expect($line.eq(0)).to.contain('# Enter Two Numbers')
+    //     })
+    // })
 
-    it('Change Language', function(){
-        cy.contains('Execute').should('be.visible')
-        cy.get('button[id="btnLanguageGroupDrop"]').click()
-        cy.wait(500)
-        cy.get('.dropdown-item').contains('C++').click()
-        cy.wait(1500)
-        cy.get('pre[class=" CodeMirror-line "]').eq(0).click().type('{ctrl+a}{backspace}#include <iostream> {backspace}{enter}using namespace std;{enter}{enter}int main(){enter}{{}{enter}int num1, num2, num3;{enter}cin >> num1 >> num2;{enter}num3 = num1 + num2;{enter}cout << "The sum of two numbers is " << num3;{enter}return 0;{enter}{}}{enter}')
-        cy.wait(1000)
-        cy.contains('#include <iostream>').should('be.visible')
-        cy.get('textarea[id="script-input"]').type('{selectall}{backspace}10{enter}15')
-        cy.wait(500)
-        cy.get('.btn').contains('Execute').click()
-        cy.wait(5000)
-        // cy.get('textarea[id="console"]').should('have.value', 'The sum of two numbers is 25')
-    })
+    // it('Change Language', function(){
+    //     cy.contains('Execute').should('be.visible')
+    //     cy.get('button[id="btnLanguageGroupDrop"]').click()
+    //     cy.wait(500)
+    //     cy.get('.dropdown-item').contains('C++').click()
+    //     cy.wait(1500)
+    //     cy.get('pre[class=" CodeMirror-line "]').eq(0).click().type('{ctrl+a}{backspace}#include <iostream> {backspace}{enter}using namespace std;{enter}{enter}int main(){enter}{{}{enter}int num1, num2, num3;{enter}cin >> num1 >> num2;{enter}num3 = num1 + num2;{enter}cout << "The sum of two numbers is " << num3;{enter}return 0;{enter}{}}{enter}')
+    //     cy.wait(1000)
+    //     cy.contains('#include <iostream>').should('be.visible')
+    //     cy.get('textarea[id="script-input"]').type('{selectall}{backspace}10{enter}15')
+    //     cy.wait(500)
+    //     cy.get('.btn').contains('Execute').click()
+    //     cy.wait(5000)
+    //     // cy.get('textarea[id="console"]').should('have.value', 'The sum of two numbers is 25')
+    // })
 
-    it('Find', function(){
-        cy.get('pre[class=" CodeMirror-line "]').eq(0).click().type('{ctrl+f}num3{enter}')
-        cy.wait(1000)
-        cy.get('span[class="cm-variable cm-overlay cm-searching"]').should(($line) => {
-            expect($line).to.contain('num3')
-        })
-        cy.get('span[class="cm-variable cm-overlay cm-searching"]').should('have.length', 3)
-    })
+    // it('Find', function(){
+    //     cy.get('pre[class=" CodeMirror-line "]').eq(0).click().type('{ctrl+f}num3{enter}')
+    //     cy.wait(1000)
+    //     cy.get('span[class="cm-variable cm-overlay cm-searching"]').should(($line) => {
+    //         expect($line).to.contain('num3')
+    //     })
+    //     cy.get('span[class="cm-variable cm-overlay cm-searching"]').should('have.length', 3)
+    // })
 
-    it('Replace', function(){
-        cy.get('pre[class=" CodeMirror-line "]').eq(0).click().type('{ctrl+shift+r}num3{enter}NUM3{enter}')
-        cy.wait(1000)
-        cy.get('span[class="cm-variable cm-overlay cm-searching"]').should(($line) => {
-            expect($line).to.contain('NUM3')
-        })
-        cy.get('span[class="cm-variable cm-overlay cm-searching"]').should('have.length', 3)
-    })
+    // it('Replace', function(){
+    //     cy.get('pre[class=" CodeMirror-line "]').eq(0).click().type('{ctrl+shift+r}num3{enter}NUM3{enter}')
+    //     cy.wait(1000)
+    //     cy.get('span[class="cm-variable cm-overlay cm-searching"]').should(($line) => {
+    //         expect($line).to.contain('NUM3')
+    //     })
+    //     cy.get('span[class="cm-variable cm-overlay cm-searching"]').should('have.length', 3)
+    // })
 
-    it('Vim', function(){
-        cy.get('a[href*="#tabView"]').click()
-        cy.wait(500)
-        cy.contains('Dark Mode').should('be.visible')
-        cy.get('button[id="vim"]').click()
-        cy.get('pre[class=" CodeMirror-line "]').eq(8).click().type('{shift}Y{shift}P')
-        cy.wait(500)
-        cy.get('pre[class=" CodeMirror-line "]').eq(9).should(($line) => {
-            const line = $line.text()
-            expect(line).to.contain('cout << "The sum of two numbers is " << NUM3;')
-        })
-    })
+    // it('Vim', function(){
+    //     cy.get('a[href*="#tabView"]').click()
+    //     cy.wait(500)
+    //     cy.contains('Dark Mode').should('be.visible')
+    //     cy.get('button[id="vim"]').click()
+    //     cy.get('pre[class=" CodeMirror-line "]').eq(8).click().type('{shift}Y{shift}P')
+    //     cy.wait(500)
+    //     cy.get('pre[class=" CodeMirror-line "]').eq(9).should(($line) => {
+    //         const line = $line.text()
+    //         expect(line).to.contain('cout << "The sum of two numbers is " << NUM3;')
+    //     })
+    // })
 
-    it('Emacs', function(){
-        cy.contains('Dark Mode').should('be.visible')
-        cy.get('button[id="emacs"]').click()
-        cy.get('pre[class=" CodeMirror-line "]').eq(10).click().type('{ctrl+o}')
-        cy.wait(500)
-        cy.get('pre[class=" CodeMirror-line "]').eq(11).should(($line) => {
-            const line = $line.text()
-            expect(line).to.contain('')
-        })
-    })
+    // it('Emacs', function(){
+    //     cy.contains('Dark Mode').should('be.visible')
+    //     cy.get('button[id="emacs"]').click()
+    //     cy.get('pre[class=" CodeMirror-line "]').eq(10).click().type('{ctrl+o}')
+    //     cy.wait(500)
+    //     cy.get('pre[class=" CodeMirror-line "]').eq(11).should(($line) => {
+    //         const line = $line.text()
+    //         expect(line).to.contain('')
+    //     })
+    // })
 
-    it('Change Tab', function(){
-        cy.contains('Dark Mode').should('be.visible')
-        cy.get('button[id="btnTabSizeGroupDrop"]').click()
-        cy.wait(500)
-        cy.get('.dropdown-item').contains('2').click()
-        cy.wait(1000)
-        cy.get('button[id="btnTabSizeGroupDrop"]').should(($tab) => {
-            expect($tab).to.contain('2')
-        })
-    })
+    // it('Change Tab', function(){
+    //     cy.contains('Dark Mode').should('be.visible')
+    //     cy.get('button[id="btnTabSizeGroupDrop"]').click()
+    //     cy.wait(500)
+    //     cy.get('.dropdown-item').contains('2').click()
+    //     cy.wait(1000)
+    //     cy.get('button[id="btnTabSizeGroupDrop"]').should(($tab) => {
+    //         expect($tab).to.contain('2')
+    //     })
+    // })
 
-    it('Change Font', function(){
-        cy.contains('Dark Mode').should('be.visible')
-        cy.get('button[id="btnFontSizeGroupDrop"]').click()
-        cy.wait(500)
-        cy.get('.dropdown-item').contains('10').click()
-        cy.wait(1000)
-        cy.get('button[id="btnFontSizeGroupDrop"]').should(($font) => {
-            expect($font).to.contain('10')
-        })
-    })
+    // it('Change Font', function(){
+    //     cy.contains('Dark Mode').should('be.visible')
+    //     cy.get('button[id="btnFontSizeGroupDrop"]').click()
+    //     cy.wait(500)
+    //     cy.get('.dropdown-item').contains('10').click()
+    //     cy.wait(1000)
+    //     cy.get('button[id="btnFontSizeGroupDrop"]').should(($font) => {
+    //         expect($font).to.contain('10')
+    //     })
+    // })
 
     it('Chat', function(){
         cy.get('a[href*="#tabChat"]').click()
